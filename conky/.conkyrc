@@ -1,0 +1,64 @@
+# -- PALETTE --
+
+# Blue
+color0 00b6ed
+
+# Purple
+color1 bb00cc
+
+# Yellow
+color2 cccc00
+
+# Green
+color3 00cc11
+
+# Red
+color4 ff5555
+
+# Light grey
+color5 e1e1e1
+
+# Medium grey
+color6 c7c7c7
+
+# Dark grey
+color7 262626
+
+# Orange
+color8 cc7800
+
+
+# -- GENERAL --
+
+double_buffer yes
+update_interval 0.5
+draw_shades no
+default_color e1e1e1  # color5
+
+# Font
+use_xft yes
+xftfont LED BOARD REVERSED:size=7
+
+# Placement
+gap_x 5
+gap_y 30
+
+# Window
+own_window yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_type panel
+own_window_transparent no
+
+# Border
+draw_borders yes
+border_width 3
+border_inner_margin 5
+
+# Text area
+minimum_size 1920 5
+maximum_width 1920
+max_text_width 0
+text_buffer_size 315
+
+TEXT
+$color0${font OpenLogos:size=8}B$font$color UP: $uptime_short   CPU: ${if_match $cpu > 60}$color4$cpu %$color$else$cpu %$endif${goto 250}$color   MEM: ${if_match $memperc > 60}$color4$memperc %$color$else$memperc %$endif   ${color3}ROOT: ${if_match ${fs_used_perc /} > 80}$color4${fs_used_perc /} %$color$else${fs_used_perc /} %$endif   ${color2}CPU: ${if_match ${hwmon 2 temp 1} > 70}$color4${hwmon 2 temp 1}C$color$else${hwmon 2 temp 1}C$endif   ${color2}GPU: ${if_match ${hwmon 0 temp 1} > 70}$color4${hwmon 0 temp 1}C$color$else${hwmon 0 temp 1}C $endif  ${color0}BAT: ${if_match $battery_percent < 30}$color4$battery_short$color$else$battery_short$endif   ${color0}WIFI: ${if_match ${wireless_link_qual_perc wlp3s0} < 30}$color4${wireless_link_qual_perc wlp3s0}%${goto 1020}$color$else${wireless_link_qual_perc wlp3s0}%${goto 1010}$endif   ${color1}VOL: ${exec master-volume}$color   ${color8}BRIGHT: ${exec brightness-level} %        $color
