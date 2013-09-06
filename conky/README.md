@@ -15,4 +15,5 @@ You'll most definitely need to change the variables of this script to suite your
 
 Installation
 ------------
-Just download the script and save it as `.conkyrc` in your home folder and start Conky.
+1. Add `master-volume` and `brightness-level` to your `$PATH`
+2. Add `.conkyrc` to your home folder
