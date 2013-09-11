@@ -107,6 +107,7 @@ set mouse=
 
 " Don't wrap lines
 set nowrap
+set textwidth=0 wrapmargin=0
 " Use spaces instead of tabs
 set expandtab
 " The number of spaces used for tab
@@ -115,8 +116,6 @@ set tabstop=4
 set shiftwidth=4
 " Show line numbers
 set number
-" Line length
-set tw=120
 
 " Highlight search terms
 set hlsearch
