@@ -61,6 +61,12 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Easy window resizing
+map <S-h> :vertical resize -5<cr>
+map <S-j> :resize +5<cr>
+map <S-k> :resize -5<cr>
+map <S-l> :vertical resize +5<cr>
+
 " Enter command mode made easier when using a swedish keyboard
 noremap ö :
 " Edit .vimrc
