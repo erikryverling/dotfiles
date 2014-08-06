@@ -2,7 +2,7 @@ function prompt_yverling_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
-  # Get Git repository information.
+  # Get Git repository information
   if (( $+functions[git-info] )); then
     git-info
   fi
@@ -17,6 +17,8 @@ function prompt_yverling_setup {
   # Add hook for calling git-info before each command.
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd prompt_yverling_precmd
+
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%F{blue}[I]%f '
 
   # Git formatting
   zstyle ':prezto:module:git:info:branch' format '%F{magenta}%b%f'
@@ -41,7 +43,7 @@ function prompt_yverling_setup {
 
  # Main prompt
   PROMPT='%(!.%F{red}.%F{green})%m@%n%f  %F{blue}%~%f $git_info[prompt]
-%(!.#.$) '
+$editor_info[keymap]%(!.#.$) '
 }
 
 prompt_yverling_setup "$@"

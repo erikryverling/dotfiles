@@ -1,0 +1,16 @@
+# Prezto initialization
+source /etc/zsh/zpreztorc
+source /usr/lib/prezto/init.zsh
+source /usr/lib/prezto/runcoms/zshrc
+
+# Load color directory
+eval `dircolors -b /opt/config/dircolors-solarized/dircolors.ansi-dark`
+
+# Aliases
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias dmesg='dmesg --color'
+
+alias la='ls -halX --color=auto'
+alias xclip='xclip -selection p'
+alias git="hub"
