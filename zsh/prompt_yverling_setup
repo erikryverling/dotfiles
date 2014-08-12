@@ -18,7 +18,8 @@ function prompt_yverling_setup {
   autoload -Uz add-zsh-hook
   add-zsh-hook precmd prompt_yverling_precmd
 
-  zstyle ':prezto:module:editor:info:keymap:primary' format '%F{blue}[I]%f '
+  zstyle ':prezto:module:editor:info:keymap:primary' format '%F{yellow}>%f '
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{green}<%f '
 
   # Git formatting
   zstyle ':prezto:module:git:info:branch' format '%F{magenta}%b%f'
