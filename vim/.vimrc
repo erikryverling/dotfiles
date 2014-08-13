@@ -1,16 +1,20 @@
 " -- PLUGINS --
 
+set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-sensible'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'wincent/Command-T'
-Bundle 'vim-scripts/LustyJuggler'
-Bundle 'scrooloose/syntastic'
-Bundle 'vim-scripts/AutoTag'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-sensible'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'wincent/Command-T'
+Plugin 'vim-scripts/LustyJuggler'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/AutoTag'
+
+call vundle#end()
+filetype plugin indent on
 
 
 " -- FONT AND COLORS --
