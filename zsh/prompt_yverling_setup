@@ -43,7 +43,7 @@ function prompt_yverling_setup {
 
 
  # Main prompt
-  PROMPT='%(!.%F{red}.%F{green})%m@%n%f  %F{blue}%~%f $git_info[prompt]
+  PROMPT='%(!.%F{red}.%F{green})%n@%m%f  %F{blue}%~%f $git_info[prompt]
 $editor_info[keymap]%(!.#.$) '
 }
 
