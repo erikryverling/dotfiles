@@ -206,4 +206,9 @@ function! DoPrettyXML()
   " restore the filetype
   exe "set ft=" . l:origft
 endfunction
+
+
+" -- FORMATTING --
+
 command! PrettyXML call DoPrettyXML()
+command! PrettyJSON %!python -m json.tool
