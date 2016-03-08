@@ -1,0 +1,51 @@
+[user]
+    name = Erik R. Yverling
+[core]
+    autocrlf = input
+    editor = vim
+[color]
+    ui = auto
+[alias]
+    # Standard
+    b = branch
+    ch = checkout
+    co = commit
+    f = fetch
+    pl = pull
+    pu = push
+    pf = push -f
+    st = status
+
+    # Stash
+    sh = stash
+    shp = stash pop
+    shc = stash clear
+
+    # Log
+    lgg = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset \"%s\" %C(blue)(%cr)%Creset %C(cyan)<%an>' --abbrev-commit
+    lgc = log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -n 10
+    lgcf = log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit --follow
+    lgb = "!git log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -n $(git rev-list master.. --count)"
+
+    # Diff
+    dn = diff --name-only
+    do = diff origin
+    don = diff --name-only origin
+
+    # Rebase
+    rom = rebase origin/master
+    ri = rebase -i
+    ri2 = rebase -i HEAD~2
+    rib = "!git rebase -i HEAD~$(git rev-list master.. --count)"
+[merge]
+    tool = my-meld
+[mergetool "my-meld"]
+    cmd = git-merge-meld $BASE $LOCAL $REMOTE $MERGED
+[push]
+    default = simple
+[diff]
+    tool = meld
+[difftool]
+    prompt = false
+[branch]
+    autosetuprebase = always
