@@ -5,5 +5,4 @@ This is my systemwide zsh configuration
 Installation
 ------------
 1. Install [antigen](https://github.com/zsh-users/antigen)
-1. Install the [erikryverling/agnoster-zsh-theme](https://github.com/erikryverling/agnoster-zsh-theme)
 1. Add `zshrc` to the `/etc/` folder 
