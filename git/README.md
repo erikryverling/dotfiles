@@ -1,4 +1,5 @@
-This is my Git configuration
+This is my Git configuration.
+
 It mainly contains a set of handy aliases descibed below:
 
 ### Log
