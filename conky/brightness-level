@@ -1,5 +1,0 @@
-#!/bin/bash
-level=`cat /sys/class/backlight/acpi_video1/brightness`
-
-# Convert to percent
-echo $((level*10))
