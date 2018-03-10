@@ -1,10 +1,9 @@
-![zsh-promt](http://erik.r.yverling.se/images/external/zsh-prompt.png)
+![zsh](https://user-images.githubusercontent.com/1917608/37242338-1eceb460-2468-11e8-93d7-f207ef354bc8.png)
 
-This is my systemwide zsh and _prezto_ configuration
+This is my systemwide zsh configuration
 
 Installation
 ------------
-1. Install zsh
-2. Install [prezto](https://github.com/sorin-ionescu/prezto)
-2. Add `zpreztorc` and `zshrc` to the `/etc/` folder 
-3. Add `prompt_yverling_setup` to the _modules/prompt/functions/_ folder in the prezto installation folder
+1. Install [antigen](https://github.com/zsh-users/antigen)
+1. Install the [erikryverling/agnoster-zsh-theme](https://github.com/erikryverling/agnoster-zsh-theme)
+1. Add `zshrc` to the `/etc/` folder 
