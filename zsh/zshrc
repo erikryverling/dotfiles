@@ -28,7 +28,6 @@ alias dmesg='dmesg --color'
 
 alias la='ls -halX --color=auto'
 alias xclip='xclip -selection p'
-#alias git="hub"
 alias top="htop"
 
 # Shortcuts
@@ -38,17 +37,6 @@ alias v='vim'
 alias sv='sudo vim'
 
 alias gcb='./gradlew clean build'
-
-alias mci='mvn clean install'
-alias mcint='mvn clean install -DskipTests'
-alias mciit='mvn clean install -Pit'
-
-alias grm='git rebase origin/master'
-alias gri='git rebase -i'
-alias gdo='git diff origin'
-alias gdon='git diff --name-only origin'
-alias glp='git lgp'
-alias glm='git lgm'
 
 # RVM
 [[ -s /usr/local/.rvm/scripts/rvm ]] && source /usr/local/.rvm/scripts/rvm
