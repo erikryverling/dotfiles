@@ -1,64 +1,65 @@
-# -- PALETTE --
+---- Palette ----
 
-# Blue
-color0 00b6ed
+-- Blue
+color0 83a598
 
-# Purple
-color1 bb00cc
+-- Purple
+color1 d3869b
 
-# Yellow
-color2 cccc00
+-- Yellow
+color2 fabd2f
 
-# Green
-color3 00cc11
+-- Green
+color3 b8bb26
 
-# Red
-color4 ff5555
+-- Red
+color4 fb4934
 
-# Light grey
-color5 e1e1e1
+-- Forground (light yellow)
+color5 928374
 
-# Medium grey
-color6 c7c7c7
-
-# Dark grey
-color7 262626
-
-# Orange
-color8 cc7800
+-------------
 
 
-# -- GENERAL --
-
+-- General
 double_buffer yes
 update_interval 0.5
 draw_shades no
-default_color e1e1e1  # color5
+-- color 5
+default_color ebdbb2
 
-# Font
+-- Font
 use_xft yes
-xftfont LED BOARD REVERSED:size=7
 
-# Placement
-gap_x 5
-gap_y 30
+-- Gap between borders of screen and text
+gap_x 8
+gap_y 8
 
-# Window
+-- Force utf-8
+override_utf8_locale no
+
+-- Window
 own_window yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 own_window_type panel
-own_window_transparent no
+own_window_colour 1d2021
+--own_window_argb_visual yes
+--own_window_argb_value 217
+use_spacer right
 
-# Border
-draw_borders yes
-border_width 3
-border_inner_margin 5
+-- Border
+draw_borders no
+border_width 4
+border_inner_margin 4
 
-# Text area
-minimum_size 1920 5
-maximum_width 1920
+-- Text area
+minimum_size 3600 5
+maximum_width 3600
 max_text_width 0
 text_buffer_size 315
 
+-- Text alignment
+alignment bottom_left
+
 TEXT
-$color0${font OpenLogos:size=8}B$font$color UP: $uptime_short   CPU: ${if_match $cpu > 60}$color4$cpu %$color$else$cpu %$endif${goto 250}$color   MEM: ${if_match $memperc > 60}$color4$memperc %$color$else$memperc %$endif   ${color3}ROOT: ${if_match ${fs_used_perc /} > 80}$color4${fs_used_perc /} %$color$else${fs_used_perc /} %$endif   ${color2}CPU: ${if_match ${hwmon 2 temp 1} > 70}$color4${hwmon 2 temp 1}C$color$else${hwmon 2 temp 1}C$endif   ${color2}GPU: ${if_match ${hwmon 0 temp 1} > 70}$color4${hwmon 0 temp 1}C$color$else${hwmon 0 temp 1}C $endif  ${color0}BAT: ${if_match $battery_percent < 30}$color4$battery_short$color$else$battery_short$endif   ${color0}WIFI: ${if_match ${wireless_link_qual_perc wlp3s0} < 30}$color4${wireless_link_qual_perc wlp3s0}%${goto 1020}$color$else${wireless_link_qual_perc wlp3s0}%${goto 1010}$endif   ${color1}VOL: ${exec master-volume}$color   ${color8}BRIGHT: ${exec brightness-level} %        $color
+${font Fira Mono:size=10}$color2${time %a %d %b %H:%M}$color  | BATTERY: ${if_match $battery_percent < 30}$color4$battery_percent  %$color$else$color3$battery_percent %$color$endif  |  WIFI: $color2${wireless_essid}$color  VPN: ${if_up tun0}${color3}Connected$color$else${color2}Disconnected$color$endif  |  MEM: ${if_match $memperc > 70}$color4$memperc % ($mem)$color$else$color3$memperc % ($mem)$color$endif  CPU: ${if_match $cpu > 60}$color4$cpu % ($acpitemp C)$color$else$color3$cpu % ($acpitemp C)$color$endif$color${goto 1980}  |  ROOT: ${if_match ${fs_used_perc /} > 80}$color4${fs_used_perc /} % (${fs_used /})$color$else$color3${fs_used_perc /} % (${fs_used /})$color$endif
