@@ -13,19 +13,30 @@
     f = fetch
     pl = pull
     pu = push
-    pf = push -f
-    st = status
+    s = status
+
+    # Checkout
+    chm = checkout master
+    chb = checkout -b
+
+    # Remove branch
+    rb = b -D
+    rab = "!git branch | grep -v "develop" | sed 's/^[ *]*//' | sed 's/^/git branch -D /' | bash"
+
+    # Commit
+    cf = commit -am "Fix"
 
     # Stash
-    sh = stash
-    shp = stash pop
-    shc = stash clear
+    st = stash
+    stp = stash pop
+    stc = stash clear
 
     # Log
-    lgg = log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset \"%s\" %C(blue)(%cr)%Creset %C(cyan)<%an>' --abbrev-commit
-    lgc = log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -n 10
-    lgcf = log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit --follow
-    lgb = "!git log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -n $(git rev-list master.. --count)"
+    ll = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -10"
+    lll = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit"
+    lgg = "!git --no-pager log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset \"%s\" %C(blue)(%cr)%Creset %C(cyan)<%an>' --abbrev-commit"
+    lgcf = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit --follow"
+    lgb = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -n $(git rev-list master.. --count)"
 
     # Diff
     dn = diff --name-only
@@ -33,10 +44,22 @@
     don = diff --name-only origin
 
     # Rebase
-    rom = rebase origin/master
+    rom = "!git fetch && git rebase origin/master"
+    rod = "!git fetch && git rebase origin/develop"
     ri = rebase -i
     ri2 = rebase -i HEAD~2
+    ri3 = rebase -i HEAD~3
+    ri4 = rebase -i HEAD~4
+    ri5 = rebase -i HEAD~5
+    ri6 = rebase -i HEAD~6
+    ri7 = rebase -i HEAD~7
+    ri8 = rebase -i HEAD~8
+    ri9 = rebase -i HEAD~9
+    ri10 = rebase -i HEAD~10
     rib = "!git rebase -i HEAD~$(git rev-list master.. --count)"
+
+    # Push
+    puf = push -f
 [merge]
     tool = my-meld
 [mergetool "my-meld"]
@@ -49,3 +72,5 @@
     prompt = false
 [branch]
     autosetuprebase = always
+[http]
+	cookiefile = /home/erik/.gitcookies
