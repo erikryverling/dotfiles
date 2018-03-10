@@ -1,16 +1,57 @@
-# Prezto initialization
-source /etc/zsh/zpreztorc
-source /usr/lib/prezto/init.zsh
-source /usr/lib/prezto/runcoms/zshrc
+## Antigen ##
+source /opt/antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle git
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle dirhistory
+
+antigen theme erikryverling/agnoster-zsh-theme agnoster
+
+antigen apply
+
+
+source /etc/environment
+
+# This is now depricated
+unset GREP_OPTIONS
 
 # Load color directory
 eval `dircolors -b /opt/config/dircolors-solarized/dircolors.ansi-dark`
 
-# Aliases
+
+# -- Aliases --
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias dmesg='dmesg --color'
 
 alias la='ls -halX --color=auto'
 alias xclip='xclip -selection p'
-alias git="hub"
+#alias git="hub"
+alias top="htop"
+
+# Shortcuts
+alias s='sudo'
+
+alias v='vim'
+alias sv='sudo vim'
+
+alias gcb='./gradlew clean build'
+
+alias mci='mvn clean install'
+alias mcint='mvn clean install -DskipTests'
+alias mciit='mvn clean install -Pit'
+
+alias grm='git rebase origin/master'
+alias gri='git rebase -i'
+alias gdo='git diff origin'
+alias gdon='git diff --name-only origin'
+alias glp='git lgp'
+alias glm='git lgm'
+
+# RVM
+[[ -s /usr/local/.rvm/scripts/rvm ]] && source /usr/local/.rvm/scripts/rvm
+
+# Correct gruvbox colors
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
