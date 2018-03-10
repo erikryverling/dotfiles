@@ -16,3 +16,6 @@ It mainly contains a set of handy aliases descibed below:
 * `ri` - Interactive rebase
 * `ri2` - Interactive rebase on the latest two commits
 * `rib` - Interactve rebase on all commtis on the current branch (since branched from `master`)
+
+### Push
+* `puf` - Push forcefully
