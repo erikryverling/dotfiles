@@ -16,7 +16,8 @@
     s = status
 
     # Checkout
-    chm = checkout master
+    chm = !sh -c 'git checkout master && git pull'
+    chd = !sh -c 'git checkout develop && git pull'
     chb = checkout -b
 
     # Remove branch
@@ -30,6 +31,7 @@
     st = stash
     stp = stash pop
     stc = stash clear
+    sl = stash list
 
     # Log
     ll = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -10"
@@ -39,27 +41,30 @@
     lgb = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -n $(git rev-list master.. --count)"
 
     # Diff
+    d = diff
     dn = diff --name-only
     do = diff origin
     don = diff --name-only origin
 
+    # Show
+    sn = show HEAD --name-only
+
     # Rebase
-    rom = "!git fetch && git rebase origin/master"
-    rod = "!git fetch && git rebase origin/develop"
-    ri = rebase -i
-    ri2 = rebase -i HEAD~2
-    ri3 = rebase -i HEAD~3
-    ri4 = rebase -i HEAD~4
-    ri5 = rebase -i HEAD~5
-    ri6 = rebase -i HEAD~6
-    ri7 = rebase -i HEAD~7
-    ri8 = rebase -i HEAD~8
-    ri9 = rebase -i HEAD~9
-    ri10 = rebase -i HEAD~10
-    rib = "!git rebase -i HEAD~$(git rev-list master.. --count)"
+    rom = !sh -c 'git stash && git fetch && git rebase origin/master && git stash pop'
+    rod = !sh -c 'git stash && git fetch && git rebase origin/develop && git stash pop'
+    ri = !sh -c 'git stash && git rebase -i && git stash pop'
+    ri2 = !sh -c 'git stash && git rebase -i HEAD~2 && git stash pop'
+    ri3 = !sh -c 'git stash && git rebase -i HEAD~3 && git stash pop'
+    ri4 = !sh -c 'git stash && git rebase -i HEAD~4 && git stash pop'
+    ri5 = !sh -c 'git stash && git rebase -i HEAD~5 && git stash pop'
+    ri6 = !sh -c 'git stash && git rebase -i HEAD~6 && git stash pop'
+    ri7 = !sh -c 'git stash && git rebase -i HEAD~7 && git stash pop'
+    ri8 = !sh -c 'git stash && git rebase -i HEAD~8 && git stash pop'
+    ri9 = !sh -c 'git stash && git rebase -i HEAD~9 && git stash pop'
+    ri10 = !sh -c 'git stash && git rebase -i HEAD~10 && git stash pop'
 
     # Push
-    puf = push -f
+    puf = !sh -c 'git stash && git push -f && git stash pop'
 [merge]
     tool = my-meld
 [mergetool "my-meld"]
@@ -73,4 +78,8 @@
 [branch]
     autosetuprebase = always
 [http]
-	cookiefile = /home/erik/.gitcookies
+    cookiefile = /home/erik/.gitcookies
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true

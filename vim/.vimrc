@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'morhetz/gruvbox'
-Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/AutoTag'
 Plugin 'instant-markdown.vim'
 Plugin 'tpope/vim-surround'
@@ -19,12 +18,13 @@ filetype plugin indent on
 
 " -- FONT AND COLORS --
 
-set guifont=Fira\ Mono\ 13
+set guifont=JetBrains\ Mono\ Regular:h14
 colorscheme gruvbox
 set background=dark
 
 
 " -- GUI --
+
 if has("gui_running")
 
     " Remove toolbar
@@ -36,14 +36,24 @@ if has("gui_running")
     " Remove right-hand scroll bar
     set guioptions-=r
 
+    " Remove right-hand scoll bar in vertical splot
+    set guioptions-=R
+
     " Remove left-hand scroll bar
     set guioptions-=l
+
+    " Remove left-hand scroll bar in vertical split
+    set guioptions-=L
 
     " Remove bottom scroll bar
     set guioptions-=b
 
     " Use dark theme
     set background=dark
+
+    " Transparent background
+    set transparency=3
+
 endif
 
 
@@ -141,7 +151,7 @@ nmap <silent> <leader>' 0i* <Esc>
 
 " -- EDITOR --
 
-" No mouse of cource
+" No mouse ofcource
 set mouse=
 
 " Don't wrap lines
@@ -206,12 +216,14 @@ set viminfo^=%
 
 set wildchar=<Tab> wildmenu wildmode=full
 set wildcharm=<C-Z>
-nnoremap <F10> :b <C-Z>
+nnoremap <leader>ö :b <C-Z>
+nnoremap <Leader>å :bn<CR>
+
 
 " -- COPY AND PASTE --
 
 " Make the PRIMARY clipboard default
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 
 " -- SAVE AND BACKUP --
@@ -231,12 +243,15 @@ command! PrettyJSON %!python -m json.tool
 
 
 " -- INSTANT MARKDOWN --
+
 let g:instant_markdown_autostart=0
 
 " Toggle Syntastic syntax checker
 map <silent> <leader>i :InstantMarkdownPreview<CR>
 
+
 " -- SURROUND --
+
 let g:surround_45 = "```\r```"
 
 
