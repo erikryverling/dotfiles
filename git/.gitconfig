@@ -7,25 +7,27 @@
     ui = auto
 [alias]
     # Standard
-    b = branch
+    cl = clone
     ch = checkout
+    b = branch
+    a = add *
     co = commit
     f = fetch
     pl = pull
     pu = push
     s = status
+    d = diff
+    rl = reflog
 
     # Checkout
-    chm = !sh -c 'git checkout master && git pull'
+    chm = !sh -c 'git checkout main && git pull'
+    chma = !sh -c 'git checkout master && git pull'
     chd = !sh -c 'git checkout develop && git pull'
     chb = checkout -b
 
-    # Remove branch
-    rb = b -D
-    rab = "!git branch | grep -v "develop" | sed 's/^[ *]*//' | sed 's/^/git branch -D /' | bash"
-
     # Commit
-    cf = commit -am "Fix"
+    com = commit -am
+    coa = commit --amend
 
     # Stash
     st = stash
@@ -34,41 +36,55 @@
     sl = stash list
 
     # Log
-    ll = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -10"
-    lll = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit"
-    lgg = "!git --no-pager log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset \"%s\" %C(blue)(%cr)%Creset %C(cyan)<%an>' --abbrev-commit"
-    lgcf = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit --follow"
-    lgb = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -n $(git rev-list master.. --count)"
+    l = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -10"
+    ll = "!git --no-pager log --pretty=format:'%C(green)%h%Creset %C(cyan)<%an>%Creset \"%s\" %C(blue)(%cr)%Creset ' --abbrev-commit -100"
+    lg = "!git --no-pager log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset \"%s\" %C(blue)(%cr)%Creset %C(cyan)<%an>' --abbrev-commit -10"
+    llg = "!git --no-pager log --graph --pretty=format:'%C(green)%h%Creset -%C(yellow)%d%Creset \"%s\" %C(blue)(%cr)%Creset %C(cyan)<%an>' --abbrev-commit -100"
 
     # Diff
-    d = diff
     dn = diff --name-only
     do = diff origin
     don = diff --name-only origin
 
     # Show
-    sn = show HEAD --name-only
+    sh = show HEAD
+    shn = show HEAD --name-only
+
+    # Branch
+    bd = b -D
+    bdma = !sh -c 'git branch --merged master | grep -v \"\\* master\" | xargs -n 1 git branch -d'
+    bdm = !sh -c 'git branch --merged main | grep -v \"\\* main\" | xargs -n 1 git branch -d'
+    bdd = !sh -c 'git branch --merged develop | grep -v \"\\* develop\" | xargs -n 1 git branch -d'
 
     # Rebase
-    rom = !sh -c 'git stash && git fetch && git rebase origin/master && git stash pop'
-    rod = !sh -c 'git stash && git fetch && git rebase origin/develop && git stash pop'
-    ri = !sh -c 'git stash && git rebase -i && git stash pop'
-    ri2 = !sh -c 'git stash && git rebase -i HEAD~2 && git stash pop'
-    ri3 = !sh -c 'git stash && git rebase -i HEAD~3 && git stash pop'
-    ri4 = !sh -c 'git stash && git rebase -i HEAD~4 && git stash pop'
-    ri5 = !sh -c 'git stash && git rebase -i HEAD~5 && git stash pop'
-    ri6 = !sh -c 'git stash && git rebase -i HEAD~6 && git stash pop'
-    ri7 = !sh -c 'git stash && git rebase -i HEAD~7 && git stash pop'
-    ri8 = !sh -c 'git stash && git rebase -i HEAD~8 && git stash pop'
-    ri9 = !sh -c 'git stash && git rebase -i HEAD~9 && git stash pop'
-    ri10 = !sh -c 'git stash && git rebase -i HEAD~10 && git stash pop'
+    ra = rebase --abort
+    rc = rebase --continue
+    roma = !sh -c 'git fetch && git rebase origin/master'
+    rom = !sh -c 'git fetch && git rebase origin/main'
+    rod = !sh -c 'git fetch && git rebase origin/develop'
+    ri = !sh -c 'git rebase -i'
+    ri2 = !sh -c 'git rebase -i HEAD~2'
+    ri3 = !sh -c 'git rebase -i HEAD~3'
+    ri4 = !sh -c 'git rebase -i HEAD~4'
+    ri5 = !sh -c 'git rebase -i HEAD~5'
+    ri6 = !sh -c 'git rebase -i HEAD~6'
+    ri7 = !sh -c 'git rebase -i HEAD~7'
+    ri8 = !sh -c 'git rebase -i HEAD~8'
+    ri9 = !sh -c 'git rebase -i HEAD~9'
+    ri10 = !sh -c 'git rebase -i HEAD~10'
+
+    # Merge
+    ma = merge --abort
 
     # Push
-    puf = !sh -c 'git stash && git push -f && git stash pop'
-[merge]
-    tool = my-meld
-[mergetool "my-meld"]
-    cmd = git-merge-meld $BASE $LOCAL $REMOTE $MERGED
+    pun = push --no-verify
+    puf = !sh -c 'git push -f'
+    pufn = !sh -c 'git push -f --no-verify'
+    puff = !sh -c 'git commit -a --amend --no-edit && git push -f'
+    puffn = !sh -c 'git commit -a --amend --no-edit && git push -f --no-verify'
+
+    # Reset
+    rhh = reset --hard HEAD
 [push]
     default = simple
 [diff]
@@ -77,8 +93,6 @@
     prompt = false
 [branch]
     autosetuprebase = always
-[http]
-    cookiefile = /home/erik/.gitcookies
 [pull]
     rebase = true
 [push]
