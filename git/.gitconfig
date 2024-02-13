@@ -52,6 +52,7 @@
 
     # Branch
     bd = b -D
+    bm = b -m
     bdma = !sh -c 'git branch --merged master | grep -v \"\\* master\" | xargs -n 1 git branch -d'
     bdm = !sh -c 'git branch --merged main | grep -v \"\\* main\" | xargs -n 1 git branch -d'
     bdd = !sh -c 'git branch --merged develop | grep -v \"\\* develop\" | xargs -n 1 git branch -d'
