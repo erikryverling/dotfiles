@@ -88,6 +88,7 @@
     pufn = !sh -c 'git push -f --no-verify'
     puff = !sh -c 'git commit -a --amend --no-edit && git push -f'
     puffn = !sh -c 'git commit -a --amend --no-edit && git push -f --no-verify'
+    put = push --tags
 
     # Reset
     rhh = reset --hard HEAD

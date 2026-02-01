@@ -239,7 +239,7 @@ autocmd InsertLeave * write
 " -- FORMATTING --
 
 command! PrettyXML call DoPrettyXML()
-command! PrettyJSON %!python -m json.tool
+command! PrettyJSON %!jq
 
 
 " -- INSTANT MARKDOWN --
