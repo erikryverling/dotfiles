@@ -8,7 +8,7 @@
 [alias]
     # Standard
     cl = clone
-    ch = checkout
+    sw = switch
     b = branch
     t = tag
     a = add *
@@ -20,11 +20,11 @@
     d = diff
     rl = reflog
 
-    # Checkout
-    chm = !sh -c 'git checkout main && git pull'
-    chma = !sh -c 'git checkout master && git pull'
-    chd = !sh -c 'git checkout develop && git pull'
-    chb = checkout -b
+    # Switch
+    swm = !sh -c 'git switch main && git pull'
+    swma = !sh -c 'git switch master && git pull'
+    swd = !sh -c 'git switch develop && git pull'
+    swc = switch -c
 
     # Commit
     com = commit -am
@@ -92,6 +92,7 @@
 
     # Reset
     rhh = reset --hard HEAD
+
 [push]
     default = simple
 [diff]

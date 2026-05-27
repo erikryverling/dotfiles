@@ -7,10 +7,10 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-sensible'
-Plugin 'morhetz/gruvbox'
 Plugin 'vim-scripts/AutoTag'
 Plugin 'instant-markdown.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'catppuccin/vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -19,8 +19,9 @@ filetype plugin indent on
 " -- FONT AND COLORS --
 
 set guifont=JetBrains\ Mono\ Regular:h14
-colorscheme gruvbox
+colorscheme catppuccin_macchiato
 set background=dark
+set termguicolors
 
 
 " -- GUI --
@@ -170,7 +171,7 @@ set shiftwidth=4
 set number
 
 " Column length
-set textwidth=100 wrapmargin=0
+set textwidth=80 wrapmargin=0
 set colorcolumn=+1
 au VimEnter *.* hi ColorColumn ctermbg=236
 
@@ -199,6 +200,9 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 " Ignore tabs in HTML and XML files
 autocmd filetype html,xml set listchars-=tab:>.
 
+" Use block cursor for normal mode and bar cursor for insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 
 " -- BUFFERS --
 
