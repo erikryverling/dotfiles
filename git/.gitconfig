@@ -93,12 +93,21 @@
     # Reset
     rhh = reset --hard HEAD
 
+    # Submodule
+    suf = submodule update --force
+
+    # Worktree
+    wtl = worktree list
+    wtp = worktree prune
+
 [push]
     default = simple
 [diff]
-    tool = meld
+    tool = studio
 [difftool]
     prompt = false
+[difftool "studio"]
+    cmd = studio diff \"$LOCAL\" \"$REMOTE\"
 [branch]
     autosetuprebase = always
 [pull]
